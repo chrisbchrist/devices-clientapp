@@ -5,7 +5,7 @@ This was made with Yarn as a package manager and as such contains a yarn.lock fi
 I embedded the companion server application in this project for ease of development/deployment, and added a postinstall script that will install the dependencies for it. <br />
 This is a simple bash command, so a Powershell terminal won't install the server dependencies successfully.
 
-You can run the server with ```yarn server```, then start the client in another terminal with ```yarn start```.
+After installing dependencies, you can run the server with ```yarn server```, then start the client in another terminal with ```yarn start```.
 
 Otherwise, simply start the client with ```yarn start``` and run the server separately.
 

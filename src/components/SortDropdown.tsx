@@ -1,7 +1,13 @@
 import React, {FunctionComponent} from 'react';
 import {Dropdown, Icon, Menu} from "antd";
+import {ClickParam} from "antd/lib/menu";
 
-export const SortDropdown: FunctionComponent<any> = ({ sortBy, onChange }) => {
+interface SortDropdownProps {
+    sortBy: { value: string, name: string};
+    onChange: (e: ClickParam) => void;
+}
+
+export const SortDropdown: FunctionComponent<SortDropdownProps> = ({ sortBy, onChange }) => {
 
     return (
         <Dropdown

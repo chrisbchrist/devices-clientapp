@@ -73,7 +73,7 @@ export const DeviceForm: FunctionComponent<DeviceFormProps> = ({
             const newDevice = { id: deviceToEdit.id, ...values};
             updateDevice(newDevice)
                 .then((res: number) => {
-                        refetch()
+                        refetch();
                 })
                 .catch((err: any) => {
                     openNotificationWithIcon("error", "Operation failed", "Oops!")

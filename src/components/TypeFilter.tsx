@@ -1,30 +1,38 @@
 import React, {FunctionComponent} from 'react';
-import {Dropdown, Icon, Menu} from "antd";
+import {Button, Checkbox, Icon, Popover} from "antd";
+import {CheckboxValueType} from "antd/lib/checkbox/Group";
 
-export const TypeFilter: FunctionComponent<any> = ({filter, onChange}) => {
+interface TypeFilterProps {
+    filters: CheckboxValueType[];
+    onChange: (checkedValues: CheckboxValueType[]) => void;
+}
+
+const options = [
+    {
+        label: <><Icon type="windows"/> Windows Workstation</>,
+        value: "WINDOWS_WORKSTATION"
+    },
+    {
+        label: <><Icon type="database"/> Windows Server</>,
+        value: "WINDOWS_SERVER"
+    },
+    {
+        label: <><Icon type="apple"/> MacOS</>,
+        value: "MAC"
+    }
+];
+
+export const TypeFilter: FunctionComponent<TypeFilterProps> = ({filters, onChange}) => {
 
     return (
-        <Dropdown
-            overlay={
-                <Menu onClick={onChange}>
-                    <Menu.Item key="All">All</Menu.Item>
-                    <Menu.Item key="WINDOWS_WORKSTATION">
-                        <Icon type="windows" /> Windows Workstation
-                    </Menu.Item>
-                    <Menu.Item key="WINDOWS_SERVER">
-                        <Icon type="database" /> Windows Server
-                    </Menu.Item>
-                    <Menu.Item key="MAC">
-                        <Icon type="apple" /> MacOS
-                    </Menu.Item>
-                </Menu>
-            }
-            trigger={["click"]}
-        >
-            <a className="ant-dropdown-link">
-                <Icon type="eye" /> <strong>View:</strong> {filter.name}{" "}
-                <Icon type="down" />
-            </a>
-        </Dropdown>
+        <div>
+            <Popover content={(
+                <div>
+                    <Checkbox.Group options={options} value={filters} onChange={onChange}/>
+                </div>
+            )} trigger="click" title={<span><Icon type="eye"/> Show:</span>}>
+                <Button icon="filter">Filters</Button>
+            </Popover>
+        </div>
     )
 }

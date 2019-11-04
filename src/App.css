@@ -6,6 +6,10 @@
   background: rgba(0,0,0,0.2);
 }
 
+.ant-checkbox-group-item {
+  display: block;
+}
+
 /*.ant-dropdown-link {*/
 /*  color: #ce2043;*/
 /*}*/
@@ -43,8 +47,8 @@
 }
 
 .logo__icon svg {
-  fill: #fff;
-  opacity: 0.7;
+  fill: #ce2043;
+  opacity: 1;
 }
 
 .card-grid {
@@ -73,6 +77,10 @@
   box-shadow: 1px 1px 6px rgba(0,0,0,0.15);
   display: flex;
   align-items: center;
+}
+
+.filter-wrapper {
+  padding-right: 15px;
 }
 
 .option-box {
