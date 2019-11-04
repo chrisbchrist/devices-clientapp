@@ -1,22 +1,173 @@
-.App {
+.ant-layout-header {
+  padding: 0;
+}
+
+.ant-layout-sider-trigger {
+  background: rgba(0,0,0,0.2);
+}
+
+/*.ant-dropdown-link {*/
+/*  color: #ce2043;*/
+/*}*/
+
+.header {
+  background: #fff;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 40px;
+  box-shadow: 1px 1px 6px rgba(0,0,0,0.15);
+  z-index: 3;
+}
+
+
+.avatar-wrapper {
+  padding-left: 25px;
+}
+
+.logo {
+  background: rgb(38, 59, 76);
+  color: white;
+  font-size: 23px;
+  padding: 15px 24px;
+  height: 64px;
+  font-family: Oswald;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo__icon {
+  font-size: 30px;
+}
+
+.logo__icon svg {
+  fill: #fff;
+  opacity: 0.7;
+}
+
+.card-grid {
+  display: grid;
+  grid-gap: 1.5em;
+  grid-template-columns: repeat(auto-fill, 300px);
+  justify-content: center;
+}
+
+.grid-title {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-family: Oswald;
+  color: #555;
+  margin: 0;
+}
+
+.options-wrapper {
+}
+
+.options {
+  background: #fff;
+  padding: 24px;
+  margin-bottom: 1.5em;
+  grid-column: 1 / -1;
+  box-shadow: 1px 1px 6px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+}
+
+.option-box {
+  width: 230px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.search-wrapper {
+  margin-left: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media screen and (max-width: 885px) {
+  .options {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .option-box {
+    text-align: left;
+  }
+
+  .search-wrapper {
+    margin-left: 0;
+    padding-top: 15px;
+    width: 100%;
+  }
+}
+
+
+.card-wrapper {
+  box-shadow: 1px 1px 6px rgba(0,0,0,0.15);
+}
+
+.card__icon-wrapper {
+  width: 100%;
+  background: #fafafa;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #09d3ac;
+.card__icon {
+  font-size: 45px;
+  color: #1890ff;
+  opacity: 0.75;
+  margin-right: 15px;
+}
+
+.card__os {
+  font-weight: normal;
+}
+
+.device-name {
+  font-family: Oswald;
+}
+
+.card__hdd {
+  font-weight: 500;
+  color: #666;
+}
+
+.add-card {
+  padding: 24px;
+  border: 2px dashed #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all .3s;
+  background: #fff;
+}
+
+.add-card:hover {
+  border: 2px dashed #1890ff;
+}
+
+.add-icon {
+  font-size: 60px;
+}
+
+.add-text {
+  margin-top: 15px;
+  color: #666;
+}
+
+.form__btns {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 24px;
+}
+
+.required {
+  color: red;
+  font-size: 18px;
+  opacity: 0.7;
 }
