@@ -2,46 +2,45 @@ import React, {FunctionComponent, useState} from "react";
 import { AddCard } from "./AddCard";
 import { DeviceCard } from "./DeviceCard";
 import { Device } from "../App";
-import { Divider, Dropdown, Icon, Menu, Input } from "antd";
+import { Divider, Input } from "antd";
 import { ClickParam } from "antd/lib/menu";
 import {TypeFilter} from "./TypeFilter";
 import { SortDropdown } from "./SortDropdown";
+import {CheckboxValueType} from "antd/lib/checkbox/Group";
 
 interface DeviceGridProps {
   devices: Device[];
   launchEdit: (device?: Device) => void;
-  whyDidYouRender?: any;
 }
+
+const defaultFilters: CheckboxValueType[] = ["WINDOWS_WORKSTATION", "WINDOWS_SERVER", "MAC"];
 
 const DeviceGridFC: FunctionComponent<DeviceGridProps> = ({
   devices,
   launchEdit
 }) => {
-  const [filter, setFilter] = useState<{ value: string; name: string }>({
-    value: "All",
-    name: "All"
-  });
+  const [filters, setFilters] = useState<CheckboxValueType[]>(defaultFilters);
   const [sortBy, setSortBy] = useState<{ value: string; name: string }>({
-      value: "All",
+      value: "None",
       name: "None"
   });
 
-  const handleChangeFilter = ({ item, key }: ClickParam) => {
-    console.log(item);
-    setFilter({ value: key, name: item.node.innerText });
+
+  const handleChangeFilters = (checkedValues: CheckboxValueType[]) => {
+      setFilters(checkedValues);
   };
 
   const handleChangeSorter = ({ item, key}: ClickParam) => {
       setSortBy({value: key, name: item.node.innerText});
-  }
+  };
 
   const getVisibleDevices = (devices: Device[]) => {
-    if (filter.value === "All" && !sortBy) {
+    if (filters === defaultFilters && sortBy.value === "None") {
       return devices;
     } else {
       return devices
         .filter(d => {
-          return filter.value !== "All" ? d.type === filter.value : d;
+          return filters.includes(d.type);
         })
         .sort((a, b) => {
           switch(sortBy.value) {
@@ -61,8 +60,8 @@ const DeviceGridFC: FunctionComponent<DeviceGridProps> = ({
       <div className="card-grid">
         <h2 className="grid-title">Manage Devices ({devices.length})</h2>
         <div className="options">
-          <div className="option-box">
-           <TypeFilter filter={filter} onChange={handleChangeFilter}/>
+          <div className="filter-wrapper">
+           <TypeFilter filters={filters} onChange={handleChangeFilters}/>
           </div>
           <Divider type={"vertical"} />
           <div className="option-box">
